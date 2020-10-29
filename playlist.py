@@ -55,3 +55,24 @@ class PlayList():
             current = current.next
 
         return False
+
+    def delete(self,item):
+        current = self.head
+        while current is not None:
+            if current.data is item:
+                current.previous.next = current.next
+                current.next.previous = current.previous
+                print(f"Removed {item}")
+                return
+            current = current.next
+        print(f"{item} was not in the playlist")
+
+    def reverse(self):
+        current = self.tail
+        self.tail = self.head
+        self.head = current
+        while current is not None:
+            nxt = current.previous
+            current.previous = current.next
+            current.next = nxt
+            current = current.next
