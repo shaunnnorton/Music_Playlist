@@ -46,3 +46,12 @@ class PlayList():
     def delete_from_tail(self):
         self.tail.previous.next = None
         self.tail = self.tail.previous
+
+    def find(self,item):
+        current = self.head
+        while current is not None:
+            if current.data is item:
+                return True
+            current = current.next
+
+        return False
